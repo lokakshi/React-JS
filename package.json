@@ -1,0 +1,26 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "Learn ReactJs ",
+  "keywords": [
+    "ReactJs"
+  ],
+  "homepage": "https://github.com/lokakshi/React-JS#readme",
+  "bugs": {
+    "url": "https://github.com/lokakshi/React-JS/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lokakshi/React-JS.git"
+  },
+  "license": "ISC",
+  "author": "Aditya Lokakshi",
+  "type": "commonjs",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  }
+}
