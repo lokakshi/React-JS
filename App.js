@@ -1,15 +1,13 @@
 // we will try creating a nested div structure like parent child and grandchild using the createElement method of the React library. We will also add some attributes to the elements we create.
 // in addition we will also show how to create siblings using the createElement method. We will create a parent div with an id of 'parent', a child div with an id of 'child', and a grandchild h1 tag with an id of 'grandchild'. We will also create a sibling h1 tag with an id of 'heading' that will be rendered alongside the parent div.
+import React from "react";
+import ReactDOM from "react-dom/client";
 const parent = React.createElement(
-  "div",
-  { id: "parent" },
-  React.createElement(
-    "div",
-    { id: "child" },
+  "h1",
+  { id: "parent", key: "parent" },
+   "hello world 1"
+  );
 
-    [React.createElement("h1", { id: "grandchild" }, "hello world 1"),React.createElement('h1',{id : "grandchild2"}, "hello world 2")]     
-  ),
-);
 const heading = React.createElement("h1", { id: "heading" }, "hello world");
 // we created a react element using the createElement method of the React library. The first argument is the type of element we want to create, in this case, an 'h1' tag. The second argument is an object that can contain any attributes we want to add to the element, but in this case, we are leaving it empty. The third argument is the content of the element, which is 'hello world'.
 const root = ReactDOM.createRoot(document.getElementById("root"));

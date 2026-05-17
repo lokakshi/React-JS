@@ -8,11 +8,12 @@
 </head>
 <body>
    <div id ="root"></div>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+   <!-- since we are using parcel, we don't need to include the react and react-dom scripts we have install it from npm package -->
+    <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> -->
 
 
-    <script src="App.js">
+    <script src="App.js" type="module">
     //    we split the code into two files, one is index.html and another is App.js, we can write the code in App.js and then import it in index.html file, this way we can keep our code organized and clean.
     </script>
 </body>
