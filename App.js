@@ -22,7 +22,23 @@ const parent = (
 );
 // In the above code, we are creating a nested div structure using JSX syntax. We have a parent div with an id of 'parent', a child div with an id of 'child', and a grandchild h1 tag with an id of 'grandchild'. The content of the h1 tag is 'hello world'.
 
+
+// In the below code now we will create React Component using JSX syntax. A React component is a reusable piece of code that can be used to create UI elements. We will create a functional component called 'App' that will return the JSX code we created earlier.
+const Title=()=>{
+  return <h1 id="heading">Title</h1>;
+}
+const BodyComponent=()=>{
+  return (
+  
+    <div id="parent">
+      <div id="child">
+        <Title/>
+        <h1 id="grandchild">hello world</h1>
+      </div>
+    </div>
+  );
+} 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 // we are using the createRoot method of the ReactDOM library to create a root element that will be used to render our React component. We pass in the DOM element with the id of 'root' as an argument to this method.
-root.render(parent);
+root.render(<BodyComponent/>);
 // Finally, we call the render method on the root element and pass in the heading element we created earlier. This will render the 'hello world' message inside the 'h1' tag on the webpage.
