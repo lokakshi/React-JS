@@ -1,9 +1,24 @@
 import RestaurantCard from "./cards/RestaurantCard";
-import restaurantData from "../utils/restaurantData";
-import { useState} from "react";
+import { useEffect, useState} from "react";
+import { RESTAURANT_DATA_URL } from "../utils/constant";
+import ShimmerCards from "./shimmer/ShimmerCards";
 const BodyComponent = () => {
-  const[listOfRestaurants,setListOfRestaurants]=useState(restaurantData);
+  const[listOfRestaurants,setListOfRestaurants]=useState([]);
   const [searchText,setSearchText]=useState("");
+
+  const getRestaurants=async()=>{
+    const data=await fetch(RESTAURANT_DATA_URL);
+    const json=await data.json();
+    console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  }
+    useEffect(()=>{
+    getRestaurants();
+  },[]);
+
+  if(listOfRestaurants.length===0){
+    return <ShimmerCards/>
+  }
   return (
     <div className="body-container">
       <div className="search-container">
@@ -18,7 +33,7 @@ const BodyComponent = () => {
         />
         <button className="search-button" onClick={()=>{
           if(searchText===""){
-            setListOfRestaurants(restaurantData);
+            setListOfRestaurants([]);
             return;
           }
           const filteredRestaurants=listOfRestaurants.filter((restaurant)=>{
