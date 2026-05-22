@@ -270,3 +270,20 @@ body {
 
     animation: shimmer 1.4s ease infinite;
 }
+
+.login-btn {
+    padding: 8px 18px;
+
+    border: none;
+    border-radius: 14px;
+
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    background: linear-gradient(135deg, #ff4d6d, #ff758f);
+
+    transition: all 0.3s ease;
+}
