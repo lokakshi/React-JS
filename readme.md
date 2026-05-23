@@ -83,3 +83,11 @@ Parcel does Tree Shaking : Remove un-used code from the application automaticall
 //   );
 // }
 ```
+
+### images
+
+we can add images in our app using external URLS , or keep Static images in Public folder or src/assets
+
+Storing images in src/assets is the standard way to leverage build tools like Webpack or Vite for optimization and caching
+Webpack processes the file, adds a hash to the name for cache-busting, and can inline small images as data URIs to reduce server requests.
+Files in the public folder are not processed by the build tool and are copied directly to the build root
