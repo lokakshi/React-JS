@@ -9,15 +9,15 @@ const BodyComponent = () => {
   const getRestaurants=async()=>{
     const data=await fetch(RESTAURANT_DATA_URL);
     const json=await data.json();
-    console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    console.log(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setListOfRestaurants(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurants(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
     useEffect(()=>{
     getRestaurants();
   },[]);
 
-  if(listOfRestaurants.length===0){
+  if(listOfRestaurants?.length===0){
     return <ShimmerCards/>
   }
   return (

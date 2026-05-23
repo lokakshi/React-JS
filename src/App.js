@@ -5,7 +5,10 @@ import ReactDOM from "react-dom/client";
 import HeaderComponent from "./components/HeaderComponent";
 import BodyComponent from "./components/BodyComponent";
 
-
+import { createBrowserRouter, RouterProvider,Outlet } from "react-router-dom";
+import About from "./components/pages/About";
+import Contact from "./components/pages/Contact";
+import Menu from "./components/pages/Menu";
 
 
 // Now we will build our first project . We will create a food delivery app that will show a list of restaurants and their details. We will create a header component that will contain the logo and navigation items, a body component that will contain the search bar and restaurant cards, and a restaurant card component that will show the details of each restaurant. We will also create some dummy data for the restaurants and pass it as props
@@ -17,12 +20,26 @@ const AppLayout = () => {
       {/* header */}
       <HeaderComponent />
       {/* body */}
-      <BodyComponent />
+      <Outlet />
       {/* footer */}
     </div>
   );
 };
 const root = ReactDOM.createRoot(document.getElementById("root"));
 // we are using the createRoot method of the ReactDOM library to create a root element that will be used to render our React component. We pass in the DOM element with the id of 'root' as an argument to this method.
-root.render(<AppLayout />);
+const router = createBrowserRouter([
+  { path:"/", 
+    element:<AppLayout/>,
+    children:[
+      { path:"/about", element:<About/> },
+      { path:"/contact", element:<Contact/> },
+      { path:"/", element:(<BodyComponent/>) },
+      { path:"/restaurant/:id", element:<Menu/> }
+    ]
+  }  
+])
+root.render(<RouterProvider router={router} />);
+// we are using the render method of the root element to render our AppLayout component. We pass in the AppLayout component as an argument to this method. This will render the AppLayout component inside the DOM element with the id of 'root' on the webpage.
+//
+
 // Finally, we call the render method on the root element and pass in the heading element we created earlier. This will render the 'hello world' message inside the 'h1' tag on the webpage.

@@ -1,8 +1,10 @@
 
 import {LOGO_URL} from "../utils/constant";
 import { useState } from "react";
+import { useNavigate ,Link} from "react-router-dom";
 const HeaderComponent = () => {
   const[isLogin, setIsLogin] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     console.log("Login button clicked");
@@ -23,10 +25,11 @@ const HeaderComponent = () => {
       </div>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
+        {/* ways to navigate in ReactJS application Link or navigate */}
+          <li onClick={()=>navigate('/')}>Home</li>
+          <li><Link to="/about">About Us</Link></li>
+          <li><Link to="/contact">Contact Us</Link></li>
+          <li><Link to="/cart">Cart</Link></li>
           {isLogin ? (
             <button className="login-btn" onClick={handleLogout}>Logout</button>
           ) : (
