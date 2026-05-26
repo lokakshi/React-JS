@@ -1,7 +1,7 @@
 
 import { RESTAURANT_IMAGE_URL } from "../../utils/constant";
 import { useNavigate } from "react-router-dom";
-import image from "../../../assets/download.jpeg";
+import image from "../../assets/logo.png"
 const RestaurantCard = ({props}) => {
   // Destructuring the props object to extract the required properties for the restaurant card. We are using optional chaining to avoid any errors in case any of the properties are undefined.
   const navigate = useNavigate();

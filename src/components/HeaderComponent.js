@@ -1,5 +1,4 @@
-
-import {LOGO_URL} from "../utils/constant";
+import  LOGO from "../assets/logo.png";
 import { useState } from "react";
 import { useNavigate ,Link} from "react-router-dom";
 const HeaderComponent = () => {
@@ -18,7 +17,7 @@ const HeaderComponent = () => {
     <div className="header">
       <div className="logo-container">
         <img
-          src={LOGO_URL}
+          src={LOGO}
           alt="logo"
           className="logo"
         />

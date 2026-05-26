@@ -4,7 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import HeaderComponent from "./components/HeaderComponent";
 import BodyComponent from "./components/BodyComponent";
-
+import CartPage from "./components/pages/CartPage";
 import { createBrowserRouter, RouterProvider,Outlet } from "react-router-dom";
 import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
@@ -34,7 +34,8 @@ const router = createBrowserRouter([
       { path:"/about", element:<About/> },
       { path:"/contact", element:<Contact/> },
       { path:"/", element:(<BodyComponent/>) },
-      { path:"/restaurant/:id", element:<Menu/> }
+      { path:"/restaurant/:id", element:<Menu/> },
+      {path :"/cart", element:<CartPage name={"John Doe"}/>}
     ]
   }  
 ])

@@ -91,3 +91,51 @@ we can add images in our app using external URLS , or keep Static images in Publ
 Storing images in src/assets is the standard way to leverage build tools like Webpack or Vite for optimization and caching
 Webpack processes the file, adds a hash to the name for cache-busting, and can inline small images as data URIs to reduce server requests.
 Files in the public folder are not processed by the build tool and are copied directly to the build root
+
+## Lets learn how class based component work
+
+```jsx
+class About extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    this.state={
+        products:["apple","mango"],
+        category:["fruits","vegetable"]
+    }
+
+    componentDidMount(){
+
+    }
+    render(){
+        return (
+            <Child />
+        )
+    }
+}
+
+class Child extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    this.state={
+        count:0,
+        qty:0
+    }
+     componentDidMount(){
+        
+    }
+    render(){
+        return (
+            <div>Child Component</div>
+        )
+    }
+}
+
+
+The above 2 component has most of the things a class component has the componentDidMount() is like useEffect in 
+funcitonal Component it is called after the component has mounted to make API calls 
+
+in Class based component with create a new instance of a class -> constructor is called -> than render method is called 
+if( render ) menthod see in JSX that there is a child component so we start creating instance of the child component once it finished mounting that the parent get mounted
+```
