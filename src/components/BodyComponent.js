@@ -1,26 +1,21 @@
 import RestaurantCard from "./cards/RestaurantCard";
 import { useEffect, useState} from "react";
 import { RESTAURANT_DATA_URL } from "../utils/constant";
+import useRestaurant from "../utils/useRestaurant";
 import ShimmerCards from "./shimmer/ShimmerCards";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const BodyComponent = () => {
-  const[listOfRestaurants,setListOfRestaurants]=useState([]);
+  const { listOfRestaurants, filteredRestaurants } = useRestaurant();
   const [searchText,setSearchText]=useState("");
-  const [filteredRestaurants,setFilteredRestaurants]=useState([]);
-  const getRestaurants=async()=>{
-    const data=await fetch(RESTAURANT_DATA_URL);
-    const json=await data.json();
-    console.log(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setListOfRestaurants(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRestaurants(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-  }
-    useEffect(()=>{
-    getRestaurants();
-  },[]);
+    // Custom hooks used to fetch the restaurant data 
+  const isOnline = useOnlineStatus();
+
 
   if(listOfRestaurants?.length===0){
     return <ShimmerCards/>
   }
   return (
+    isOnline ?
     <div className="body-container">
       <div className="search-container">
         <input
@@ -59,6 +54,26 @@ const BodyComponent = () => {
         ))}
       </div>
     </div>
+    :(
+     <div className="offline-wrapper">
+  <div className="offline-card">
+    <div className="offline-icon">📡</div>
+
+    <h1 className="offline-title">You're Offline</h1>
+
+    <p className="offline-description">
+      It looks like your internet connection was interrupted.
+      Please check your network and try again.
+    </p>
+
+    <button
+      className="retry-btn"
+      onClick={() => window.location.reload()}
+    >
+      Retry Connection
+    </button>
+  </div>
+</div> )  
   );
 };
 export default BodyComponent;

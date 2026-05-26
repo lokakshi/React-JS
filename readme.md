@@ -139,3 +139,18 @@ funcitonal Component it is called after the component has mounted to make API ca
 in Class based component with create a new instance of a class -> constructor is called -> than render method is called 
 if( render ) menthod see in JSX that there is a child component so we start creating instance of the child component once it finished mounting that the parent get mounted
 ```
+
+## Custom Hooks
+
+So we have menu compenent it does 2 things fetchs data and then display it on UI
+But ideally menu component task should be just to show menu
+So we will build custom hook to do the first part which to fetch data
+added a custom hook to handle online / offline for user
+
+## Dynamic Bundling , Lazy Loading ,chunking , Bundle Size Reduction
+
+We added Grcoery section in our application now we have two heavy component one is home tab and now grocery section
+so we will load grocery component using lazy loading to reduce the bundle size with help of lazy loading when app loads we dont have grocery code in the beginning when we request for grocery tab only that time to code is made available
+by doing this we break application into smaller chunks or smaller bundlers so that overall bundle size is reduced and app doesn't slows down
+Refer App.js code to see how lazy() function that reactJs gives use works in case of grocery component
+When we navigate to grocery page it will take some time to load the data for the grocery page so react might give us error to handle this case we use "Suspense" component that we use to wrap the grocery component and that Suspense has a fallback to avoid the error so that react knows what to render until the grocery code is not available

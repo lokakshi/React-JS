@@ -1,6 +1,6 @@
 // we will try creating a nested div structure like parent child and grandchild using the createElement method of the React library. We will also add some attributes to the elements we create.
 // in addition we will also show how to create siblings using the createElement method. We will create a parent div with an id of 'parent', a child div with an id of 'child', and a grandchild h1 tag with an id of 'grandchild'. We will also create a sibling h1 tag with an id of 'heading' that will be rendered alongside the parent div.
-import React from "react";
+import React,{lazy}from "react";
 import ReactDOM from "react-dom/client";
 import HeaderComponent from "./components/HeaderComponent";
 import BodyComponent from "./components/BodyComponent";
@@ -9,6 +9,8 @@ import { createBrowserRouter, RouterProvider,Outlet } from "react-router-dom";
 import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
 import Menu from "./components/pages/Menu";
+import { Suspense } from "react";
+const Grocery = lazy(()=>import("./components/pages/Grocery"));
 
 
 // Now we will build our first project . We will create a food delivery app that will show a list of restaurants and their details. We will create a header component that will contain the logo and navigation items, a body component that will contain the search bar and restaurant cards, and a restaurant card component that will show the details of each restaurant. We will also create some dummy data for the restaurants and pass it as props
@@ -35,7 +37,8 @@ const router = createBrowserRouter([
       { path:"/contact", element:<Contact/> },
       { path:"/", element:(<BodyComponent/>) },
       { path:"/restaurant/:id", element:<Menu/> },
-      {path :"/cart", element:<CartPage name={"John Doe"}/>}
+      {path :"/cart", element:<CartPage name={"John Doe"}/>},
+      {path :"/grocery", element:<Suspense fallback="Loading..."><Grocery/></Suspense>},
     ]
   }  
 ])

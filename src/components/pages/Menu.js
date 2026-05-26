@@ -2,35 +2,14 @@ import { useEffect ,useState} from "react";
 import { useParams } from "react-router-dom";
 import { MENU_DATA_URL,RESTAURANT_IMAGE_URL } from "../../utils/constant";
 import MenuCard from "../shimmer/MenuCard";
-
+import useRestaurantMenu from "../../utils/useRestaurantMenu";
 
 const Menu = () => {
-    const [menu, setMenu] = useState([]);
-    const [restaurantInfo, setRestaurantInfo] = useState([]);
-    const [loading, setLoading] = useState(true);
     const { id } = useParams();
+    const {restaurantInfo, menu} = useRestaurantMenu(id);
+    // this is the custom hook which we created to fetch the restaurant info and menu data from api and return it to the component and we are using it here to get the restaurant info and menu data and display it in the component
+   
 
-    const getAllMenuForRestaurant = async () => {
-        try {
-            const response = await fetch(
-                `${MENU_DATA_URL}${id}`
-            );
-
-            const json = await response.json();
-
-            console.log(json?.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
-            setRestaurantInfo(json?.data.cards[2].card?.card?.info);
-            setMenu(json?.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
-            setLoading(false);
-
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    useEffect(() => {
-        getAllMenuForRestaurant();
-    }, [id]);
  
     return (
         <div>
@@ -55,7 +34,7 @@ const Menu = () => {
 </div>
             <div className="restaurant-menu-container">
                 
-                {loading ? (
+                {menu.length === 0 ? (
                     <MenuCard />
                 ) : (
                     <ul className="menu-list">
