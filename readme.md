@@ -154,3 +154,7 @@ so we will load grocery component using lazy loading to reduce the bundle size w
 by doing this we break application into smaller chunks or smaller bundlers so that overall bundle size is reduced and app doesn't slows down
 Refer App.js code to see how lazy() function that reactJs gives use works in case of grocery component
 When we navigate to grocery page it will take some time to load the data for the grocery page so react might give us error to handle this case we use "Suspense" component that we use to wrap the grocery component and that Suspense has a fallback to avoid the error so that react knows what to render until the grocery code is not available
+
+## Added Tailwind Css
+
+we added tailwindcss to our ReactJs project (parcel bundler)

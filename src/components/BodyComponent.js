@@ -17,17 +17,17 @@ const BodyComponent = () => {
   return (
     isOnline ?
     <div className="body-container">
-      <div className="search-container">
+      <div className="flex justify-center items-center gap-4 my-4 flex-wrap">
         <input
           type="text"
           placeholder="Search for restaurants"
-          className="search-input"
+          className="w-64 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           value={searchText}
           onChange={(e)=>{
             setSearchText(e.target.value);
           }}
         />
-        <button className="search-button" onClick={()=>{
+        <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onClick={()=>{
           if(searchText===""){
             setFilteredRestaurants(listOfRestaurants);
             return;
@@ -39,14 +39,14 @@ const BodyComponent = () => {
 
         }}>Search</button>
         <div className="filter-container">
-        <button className="filter-button" onClick={()=>{
+        <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600" onClick={()=>{
           setFilteredRestaurants(
             listOfRestaurants.filter((restaurant)=>restaurant.info?.avgRating>4));
         }} >Top Rated Restaurants</button>
       </div>
       </div>
       
-      <div className="restaurant-container">
+      <div className="flex flex-wrap justify-center gap-4 px-3.5 py-3.5">
       {/* Restaurant Cards */}
       {/* Restaurant Cards we had restaurants data as an array with multiple objects so we looped over the data using array.map  */}
         {filteredRestaurants?.map((restaurant) => (

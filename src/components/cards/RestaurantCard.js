@@ -1,24 +1,25 @@
 
 import { RESTAURANT_IMAGE_URL } from "../../utils/constant";
 import { useNavigate } from "react-router-dom";
-import image from "../../assets/logo.png"
+
 const RestaurantCard = ({props}) => {
   // Destructuring the props object to extract the required properties for the restaurant card. We are using optional chaining to avoid any errors in case any of the properties are undefined.
   const navigate = useNavigate();
   return (
-    <div className="restaurant-card" onClick={()=>navigate(`/restaurant/${props?.id}`)}>
+    <div className="w-64 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300
+     cursor-pointer" onClick={()=>navigate(`/restaurant/${props?.id}`)}>
       <div className="restaurant-image">
         <img
-          src={RESTAURANT_IMAGE_URL + props?.cloudinaryImageId || image}
+          src={RESTAURANT_IMAGE_URL + props?.cloudinaryImageId || "/public/logo.svg"}
           alt="restaurant"
-          className="restaurant-logo"
+          className="w-full h-40 object-cover rounded-t-lg"
         />
       </div>
       <div className="restaurant-details">
-        <h2 className="restaurant-name">{props?.name}</h2>
-        <p className="restaurant-cuisine">{props?.cuisines?.join(", ")}</p>
-        <p className="restaurant-rating">Rating: {props?.avgRating}</p>
-        <p className="restaurant-delivery-time">Delivery Time: {props?.sla?.slaString}</p>
+        <h2 className="font-bold text-lg px-1.5 py-1.5">{props?.name}</h2>
+        <p className="text-gray-600 px-1.5 py-1.5">{props?.cuisines?.join(", ")}</p>
+        <p className="text-gray-600 px-1.5 py-1.5">Rating: {props?.avgRating}</p>
+        <p className="text-gray-600 px-1.5 py-1.5">Delivery Time: {props?.sla?.slaString}</p>
       </div>
     </div>
   );

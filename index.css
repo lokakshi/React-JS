@@ -1,83 +1,9 @@
 /* ===== GLOBAL ===== */
+@import "tailwindcss";
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: "Poppins", sans-serif;
-    background: #f5f7fb;
-    color: #222;
-}
-
-/* ===== HEADER ===== */
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 12px 40px;
-
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-
-    position: sticky;
-    top: 0;
-
-    z-index: 100;
-
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.logo {
-    width: 90px;
-    transition: transform 0.3s ease;
-}
-
-.logo:hover {
-    transform: scale(1.08);
-}
 
 /* ===== NAVBAR ===== */
 
-.nav-items > ul {
-    display: flex;
-    gap: 30px;
-    align-items: center;
-}
-
-.nav-items > ul > li {
-    list-style: none;
-    font-size: 17px;
-    font-weight: 500;
-    cursor: pointer;
-    position: relative;
-    transition: 0.3s;
-}
-
-.nav-items > ul > li:hover {
-    color: #ff4d6d;
-}
-
-.nav-items > ul > li::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-
-    width: 0%;
-    height: 2px;
-
-    background: #ff4d6d;
-    transition: width 0.3s ease;
-}
-
-.nav-items > ul > li:hover::after {
-    width: 100%;
-}
 
 /* ===== SEARCH SECTION ===== */
 
