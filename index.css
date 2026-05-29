@@ -818,3 +818,7 @@ body {
 .grocery-card-details{
     padding: 18px;
 }
+
+.body-container.dark-mode {
+  background-color: #121212;
+}

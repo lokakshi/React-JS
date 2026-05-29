@@ -1,6 +1,6 @@
 // we will try creating a nested div structure like parent child and grandchild using the createElement method of the React library. We will also add some attributes to the elements we create.
 // in addition we will also show how to create siblings using the createElement method. We will create a parent div with an id of 'parent', a child div with an id of 'child', and a grandchild h1 tag with an id of 'grandchild'. We will also create a sibling h1 tag with an id of 'heading' that will be rendered alongside the parent div.
-import React,{lazy}from "react";
+import React,{lazy, useState}from "react";
 import ReactDOM from "react-dom/client";
 import HeaderComponent from "./components/HeaderComponent";
 import BodyComponent from "./components/BodyComponent";
@@ -10,6 +10,7 @@ import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
 import Menu from "./components/pages/Menu";
 import { Suspense } from "react";
+import userContext from "./utils/context/userContext";
 const Grocery = lazy(()=>import("./components/pages/Grocery"));
 
 
@@ -17,14 +18,20 @@ const Grocery = lazy(()=>import("./components/pages/Grocery"));
 
 // Now we will build our first project .
 const AppLayout = () => {
+  const [user, setUser] = useState("Aditya Lokakshi");
+  const [theme ,setTheme] = useState("light");
   return (
+    <userContext.Provider value={{ loggedUser: user,setUser ,theme, setTheme }}>
     <div className="app">
-      {/* header */}
-      <HeaderComponent />
+        {/* header */}
+     
+          <HeaderComponent />
+
       {/* body */}
       <Outlet />
       {/* footer */}
-    </div>
+      </div>
+      </userContext.Provider>
   );
 };
 const root = ReactDOM.createRoot(document.getElementById("root"));

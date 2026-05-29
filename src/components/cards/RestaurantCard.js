@@ -25,3 +25,31 @@ const RestaurantCard = ({props}) => {
   );
 }
 export default RestaurantCard;
+
+export const RestuarantCardHOC = (RestaurantCard) => {
+  // higher order component which takes the RestaurantCard component as an argument and returns a new component with some additional functionality. In this case, we are adding a "Veg" label to the restaurant card. We can use this HOC to create a new component called RestuarantCardVeg which will display the "Veg" label on the restaurant card.
+  // return ()=> here is a function that returns a new component which is a combination of the original RestaurantCard component and the additional "Veg" label. We can use this new component in our BodyComponent to display the restaurant cards with the "Veg" label for vegetarian restaurants.
+  // () => {
+  //   return (
+  //     <div className="relative">
+  //       <RestaurantCard  />
+  //       <div className="absolute top-0 left-0 bg-green-500 text-white px-2 py-1 rounded-bl-lg">
+  //         Veg
+  //       </div>
+  //     </div>
+  //   );
+  // }
+
+  // This is the new component that we are returning from the HOC. It is a combination of the original RestaurantCard component and the additional "Veg" label. We can use this new component in our BodyComponent to display the restaurant cards with the "Veg" label for vegetarian restaurants.
+  return (props) => {
+    // higer order component is a pure function we are adding something on the top that's why were are ...props here we are passing the props to the original component and then we are adding the veg label on the top of the card. We can use this new component in our BodyComponent to display the restaurant cards with the "Veg" label for vegetarian restaurants.
+    return (
+      <div className="relative">
+        <RestaurantCard {...props} />
+        <div className="absolute top-0 left-0 bg-green-500 text-white px-2 py-1 rounded-bl-lg">
+          Veg
+        </div>
+      </div>
+    );
+  }
+}

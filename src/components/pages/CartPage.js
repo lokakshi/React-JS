@@ -1,6 +1,6 @@
 import React from "react";
 import "./CartPage.css";
-
+import userContext from "../../utils/context/userContext.js";
 class CartPage extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +20,13 @@ class CartPage extends React.Component {
       <div className="cart-container">
         <div className="cart-card">
           <h2 className="cart-welcome">
-            Welcome <span>{this.props.name}</span>
+            Welcome 
+            <userContext.Consumer>
+              {(context) => (
+                <span className="logged-user">{context.loggedUser}</span>
+              )}
+            </userContext.Consumer>
+             to your Cart
           </h2>
           <p className="cart-description">
             Review your selected food items below.

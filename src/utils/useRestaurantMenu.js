@@ -6,11 +6,12 @@ const useRestaurantMenu = (restaurantId) => {
     // HERE WE ARE USING USESTATE TO STORE THE RESTAURANT INFO AND MENU DATA AND USEEFFECT TO FETCH THE DATA FROM API WHEN THE COMPONENT MOUNTED
     const [restaurantInfo, setRestaurantInfo] = useState([]);
     const [menu, setMenu] = useState([]);
+
     const fetchData= async (restaurantId)=>{
         const data = await fetch( `${MENU_DATA_URL}${restaurantId}`)
         const json = await data.json();
         setRestaurantInfo(json?.data.cards[2].card?.card?.info);
-        setMenu(json?.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards);
+        setMenu(json?.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
     }
     useEffect(()=>{
         fetchData(restaurantId);
