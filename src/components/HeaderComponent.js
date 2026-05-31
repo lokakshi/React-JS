@@ -3,7 +3,9 @@ import { useState ,useContext} from "react";
 import { useNavigate ,Link} from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import userContext from "../utils/context/userContext";
+import { useSelector } from "react-redux";
 const HeaderComponent = () => {
+  const items = useSelector((store)=>store?.cart?.items);
   const { loggedUser ,theme, setTheme } = useContext(userContext);
   const[isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
@@ -32,14 +34,8 @@ const HeaderComponent = () => {
           <li className=" hover:text-gray-900"><Link to="/grocery">Grocery</Link></li>
           <li className=" hover:text-gray-900"><Link to="/about">About Us</Link></li>
           <li className=" hover:text-gray-900"><Link to="/contact">Contact Us</Link></li>
-          <li className=" hover:text-gray-900"><Link to="/cart">Cart</Link></li>
-          {isLogin ? (
-            <button className="bg-red-500 text-white px-4 py-2 rounded" onClick={handleLogout}>Logout</button>
-          ) : (
-            <button className="bg-green-500 text-white px-4 py-2 rounded" onClick={handleLogin}>
-              Login
-            </button>
-          )}
+          <li className=" hover:text-gray-900 relative"><Link to="/cart">🛒<span className="absolute top-0 right=0 rounded-full bg-amber-700 text-amber-50 text-xs">{items?.length}</span></Link></li>
+        
               <li className="relative flex items-center justify-center w-8 h-8 rounded-full text-white text-base font-semibold bg-white-500">
                 👤
                 {loggedUser && (

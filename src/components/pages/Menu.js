@@ -5,8 +5,10 @@ import MenuCard from "../shimmer/MenuCard";
 import useRestaurantMenu from "../../utils/useRestaurantMenu";
 import RestaurantHeaderCard from "../cards/RestaurantHeaderCard";
 import Accordian from "../Accordian/Accordian";
+import { useDispatch } from "react-redux";
 const Menu = () => {
     const { id } = useParams();
+    const dispatch = useDispatch();
     const { restaurantInfo, menu } = useRestaurantMenu(id);
     const [showIndex, setShowIndex] = useState(0);
     // this is the custom hook which we created to fetch the restaurant info and menu data from api and return it to the component and we are using it here to get the restaurant info and menu data and display it in the component

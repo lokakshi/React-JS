@@ -4,14 +4,16 @@ import React,{lazy, useState}from "react";
 import ReactDOM from "react-dom/client";
 import HeaderComponent from "./components/HeaderComponent";
 import BodyComponent from "./components/BodyComponent";
-import CartPage from "./components/pages/CartPage";
+import CartPage from "./components/pages/CartPage.jsx";
 import { createBrowserRouter, RouterProvider,Outlet } from "react-router-dom";
 import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
 import Menu from "./components/pages/Menu";
 import { Suspense } from "react";
 import userContext from "./utils/context/userContext";
+import store from "./utils/store/store.js";
 const Grocery = lazy(()=>import("./components/pages/Grocery"));
+import { Provider } from "react-redux";
 
 
 // Now we will build our first project . We will create a food delivery app that will show a list of restaurants and their details. We will create a header component that will contain the logo and navigation items, a body component that will contain the search bar and restaurant cards, and a restaurant card component that will show the details of each restaurant. We will also create some dummy data for the restaurants and pass it as props
@@ -21,17 +23,17 @@ const AppLayout = () => {
   const [user, setUser] = useState("Aditya Lokakshi");
   const [theme ,setTheme] = useState("light");
   return (
+  <Provider store={store}>
     <userContext.Provider value={{ loggedUser: user,setUser ,theme, setTheme }}>
-    <div className="app">
+      <div className="app">
         {/* header */}
-     
-          <HeaderComponent />
-
+       <HeaderComponent />
       {/* body */}
       <Outlet />
       {/* footer */}
       </div>
       </userContext.Provider>
+      </Provider>
   );
 };
 const root = ReactDOM.createRoot(document.getElementById("root"));

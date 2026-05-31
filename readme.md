@@ -158,3 +158,30 @@ When we navigate to grocery page it will take some time to load the data for the
 ## Added Tailwind Css
 
 we added tailwindcss to our ReactJs project (parcel bundler)
+
+## Redux Toolkit
+
+we will add redux and redux-toolkit
+build our redux store and connect the store to our application
+build Slices and create Dispatch action and reducer function
+step 1
+<!-- import  { configureStore } from "@reduxjs/toolkit";
+
+const store = configureStore();
+
+export default store; -->
+we created a basic store
+Now we need to connect/provide store with our application
+  <!-- <Provider store={store}>
+    <userContext.Provider value={{ loggedUser: user,setUser ,theme, setTheme }}>
+      <div className="app">
+        {/* header */}
+       <HeaderComponent />
+      {/* body */}
+      <Outlet />
+      {/* footer */}
+      </div>
+      </userContext.Provider>
+      </Provider> -->
+Now Store is connected / Provided to our app
+we have create a cartSlice which has reducer fucntion with respective actions
