@@ -237,3 +237,12 @@ we did lot of unit testing on header component , Restuarant card component with 
 
 Now we will write entire flow testcase
 We have Search Option when user search something depending upon that the list of card changes so this will be entire flow test of searching restaurant
+when we use decribe to group tests
+it gives us some additional function like
+beforeAll(()=>{}) this will run before running all the test cases runs only ones
+beforeEach(()=>{}) this will excute before running each test case
+afterAll(()=>{}) runs after it has completed all the test cases
+afterEach(()=>{}) run after completion of each test case
+Now will check integration testing where we have used redux like add to cart
+
+## Project Completed
