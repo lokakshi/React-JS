@@ -185,3 +185,52 @@ Now we need to connect/provide store with our application
       </Provider> -->
 Now Store is connected / Provided to our app
 we have create a cartSlice which has reducer fucntion with respective actions
+
+## Testing
+
+Now we will be testing our application we will write testcases and run them
+Types of testing - from developer POV
+Manual testing - that we usually do(but it's not a possible everytime to completely test the entire application)
+Testing on App using Test Cases
+
+## Types of Testing Developer can do using JEST
+
+Unit Testing-You test React component in isolation (Like just test header Component -so we will do just unit testing of header component)
+Integration Testing-(Testing the integration among component -(Like if we search something and result filters so muliple component talk to each other))
+End to End Testing-E2E testing from starting to end all the flows we verify-(basically a simulation tools: cypress , Selinium)
+what we did so far
+we added - React testing Lib
+React testing lib requires jest and jest requires babel and we need a babel config so we added that
+since we have parcel uses babel by deafult so we have configuration of parcel babel and our own babel config in application
+So parcel should not use our babel config so we need to add config for parcel to stop using default babel config and use ours .parcelrc
+<!-- adityalokakshi@Adityas-MacBook-Air React-JS-1 % npm run test
+
+> y@1.0.0 test
+> jest
+
+No tests found, exiting with code 1
+Run with `--passWithNoTests` to exit with code 0
+In /Users/adityalokakshi/Aditya Projects/React-JS-1
+  37 files checked.
+  testMatch: **/__tests__/**/*.?([mc])[jt]s?(x), **/?(*.)+(spec|test).?([mc])[jt]s?(x) - 0 matches
+  testPathIgnorePatterns: /node_modules/ - 37 matches
+  testRegex:  - 0 matches
+Pattern:  - 0 matches -->
+so far if we have got his message so testing env is setuped in our application
+Now we will start writing test cases so we will write jest configuration npx jest --init
+that created a jest.config.js for us
+React testing library we need to install jsdom package separately
+Before writing big test case lets start with dummy testcase
+we created a sum.js file that is normal js function and now lets try to test it
+we will write unit test case for to check contactus page lload on dom or not
+<!-- TypeError: expect(...).toBeInTheDocument is not a function -->
+we got this error because we need to install a new lib : @testing-library/jest-dom
+we instal it now,what? we import import "@testing-library/jest-dom"
+Okay so we wrote some test cases on contact us page those are unit test cases specific to that component
+Now lets write test cases for HeaderComponent but as we started we found errors as header component uses Redux we got few issues
+what are these issues?
+we are running unit test case on header component on jsDom so that jsdom understands jsx code react code ..but it doesn't know redux toolkit code!!as it is part of redux
+so we need to provide this store to header in testcase file same way will also provide RouterProvider also and it passed
+we did lot of unit testing on header component , Restuarant card component with props using mock data, we tested restaurantcard HOC testing
+
+## Integration Testing
