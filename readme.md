@@ -234,3 +234,6 @@ so we need to provide this store to header in testcase file same way will also p
 we did lot of unit testing on header component , Restuarant card component with props using mock data, we tested restaurantcard HOC testing
 
 ## Integration Testing
+
+Now we will write entire flow testcase
+We have Search Option when user search something depending upon that the list of card changes so this will be entire flow test of searching restaurant

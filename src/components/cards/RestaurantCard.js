@@ -7,8 +7,8 @@ const RestaurantCard = ({ props }) => {
   console.log(props)
   const navigate = useNavigate();
   return (
-    <div className="w-64 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300
-     cursor-pointer" onClick={() => navigate(`/restaurant/${props?.id}`)}>
+    <div data-testid="restaurant-card" className="w-64 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300
+     cursor-pointer" onClick={() => navigate(`/restaurant/${props?.id}`)} >
       <div className="restaurant-image">
         <img
           src={RESTAURANT_IMAGE_URL + props?.cloudinaryImageId || "/public/logo.svg"}
